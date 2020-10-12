@@ -1,0 +1,54 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane fx:controller="com.hyd.hmf.controller.MainController" xmlns:fx="javafx" stylesheets="@/css/main.css">
+    <top>
+        <MenuBar>
+            <Menu text="文件">
+                <MenuItem text="新建项目" onAction="#openNewProject"/>
+                <MenuItem text="打开项目..." onAction="#openExistingProject"/>
+                <MenuItem text="关闭项目..." onAction="#closeCurrentProject"/>
+                <MenuItem text="保存项目" onAction="#saveProject" fx:id="mnuSaveProject"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <TabPane prefWidth="1000" prefHeight="650" fx:id="tabContent" disable="true" tabMinWidth="75">
+            <Tab text="总体配置" closable="false">
+                <VBox style="-fx-padding: 10" spacing="10">
+                    <VBox spacing="5">
+                        <Label text="项目名称："/>
+                        <TextField fx:id="txtProjectName"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+            <Tab text="节点列表" closable="false">
+                <BorderPane>
+                    <center>
+                        <SplitPane dividerPositions="0.25">
+                            <VBox style="-fx-padding:10;" spacing="5">
+                                <Label text="节点："/>
+                                <ListView VBox.vgrow="ALWAYS" fx:id="lstNodes"/>
+                                <HBox>
+                                    <Button text="添加节点" fx:id="btnAddNode" onAction="#addNode"/>
+                                    <Button text="删除节点" fx:id="btnDelNode"/>
+                                </HBox>
+                            </VBox>
+                            <VBox style="-fx-padding:10;" spacing="10">
+                                <VBox spacing="5">
+                                    <Label style="-fx-font-size:120%;-fx-font-weight:bold" fx:id="lblNodeHost"/>
+                                    <Separator/>
+                                </VBox>
+                                <VBox spacing="5">
+                                    <Label text="主机："/>
+                                    <TextField fx:id="txtNodeHost"/>
+                                </VBox>
+                            </VBox>
+                        </SplitPane>
+                    </center>
+                </BorderPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
